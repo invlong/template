@@ -9,12 +9,29 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.sun.webpane.platform.ConfigManager.log;
 
 public class HengFengTran {
 
+
+    /**
+     * 注册不需要进行加密处理，直接封装好发送请求即可。
+     */
+	public void registerDemo(){
+		Map<String,Object> param = new HashMap<String,Object>();
+		param.put("account", "");
+		param.put("password", "");//不要进行加密
+		param.put("channel", "HF001");
+		param.put("accessPart", "LS001");
+		//直接将param转为json，http请求即可。
+	}
+
+
+
+	/**
+	 * 下载秘钥/验卡/修改费率一码付
+	 * @throws UnsupportedEncodingException
+	 */
 	public void demo () throws UnsupportedEncodingException {
-		log.info("第三方验卡");
 		Map<String,Object> valiCardMap = new HashMap<String,Object>();
 		//存放加密数据的json对象
 		JSONObject jsonObject = new JSONObject();
@@ -36,7 +53,7 @@ public class HengFengTran {
 		jsonObject.put("mobile", "13566678871");
 		jsonObject.put("location", "烟台");
 		jsonObject.put("channel", "HF001");
-		jsonObject.put("accessPart", "YL001");
+		jsonObject.put("accessPart", "LS001");
 
 
 		jsonObject.put("cert_correct", "");
